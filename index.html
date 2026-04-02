@@ -1,217 +1,136 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
-    <!-- BASIC META -->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>saurav.dev</title>
-
-    <!-- SEO -->
-    <meta name="description" content="Portfolio of Saurav Choudhary - Java Developer, Python Developer, DSA Enthusiast.">
-    <meta name="keywords" content="Saurav Choudhary, Java Developer, Python Developer, Portfolio, DSA">
-    <meta name="author" content="Saurav Choudhary">
-
-    <!-- CSS -->
-    <link rel="stylesheet" href="style.css">
-
-    <!-- FONTS -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-    <!-- ICONS -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Saurav Choudhary | Software Developer</title>
+    <meta name="description" content="Saurav Choudhary - Java Developer, Frontend Developer, DSA Enthusiast Portfolio"/>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<!-- HEADER -->
-<header class="header">
-    <nav class="navbar container">
-        <h1 class="logo">Saurav</h1>
+<div id="progress-bar"></div>
 
-        <ul class="nav-menu">
+<header class="header">
+    <nav class="nav container">
+        <div class="logo">Saurav<span>.</span></div>
+        <ul class="nav-links">
             <li><a href="#home">Home</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#skills">Skills</a></li>
             <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="#contact" class="nav-btn">Contact ✉️</a></li>
         </ul>
     </nav>
 </header>
 
-
-<!-- MAIN -->
 <main>
-
-<!-- HERO SECTION -->
-<section id="home" class="hero">
-
-    <div class="container hero-content">
-
-        <!-- LEFT TEXT -->
-        <div class="hero-text">
-
-            <h2 class="hero-intro">Hi, I'm</h2>
-
-            <h1 class="hero-title">
-                <span class="highlight">Saurav Choudhary</span>
-            </h1>
-
-            <p class="hero-subtitle">
-                Java Developer • Python Developer • DSA Enthusiast
-            </p>
-
-            <p class="hero-description">
-                I design and build efficient, scalable, and modern applications.
-                Passionate about solving real-world problems using Data Structures & Algorithms.
-            </p>
-
-            <div class="hero-buttons">
-
-                <a href="#projects" class="btn primary">
-                    🚀 Explore Projects
-                </a>
-
-                <a href="https://github.com/Saurav-study"
-                   target="_blank"
-                   class="btn secondary">
-
-                    <i class="fab fa-github"></i> GitHub
-
-                </a>
-
-            </div>
-
-        </div>
-
-        <!-- RIGHT IMAGE -->
-       <div class="hero-image-container">
-    <img src="images/profile.jpg" alt="Saurav Profile">
+   <section id="home" class="hero section container">
+    <div class="hero-content">
+       <div class="hero-image-container" id="profileContainer">
+    <div class="glow-ring"></div>
+    <div class="ripple-effect"></div>
+    
+    <img src="images/profile.jpg" alt="Saurav" class="hero-profile-img" id="profileImg">
 </div>
 
-    </div>
-
-</section>
-
-
-<!-- ABOUT -->
-<section id="about" class="about">
-    <div class="container">
-        <h2 class="section-title">About Me</h2>
-
-        <p>
-            I am a Computer Science student passionate about software development,
-            problem-solving, and building impactful digital solutions.
-        </p>
-
-        <p>
-            My focus lies in <strong>Java Development</strong>,
-            <strong>Data Structures & Algorithms</strong>,
-            and <strong>Backend Engineering</strong>.
-        </p>
-    </div>
-</section>
-
-
-<!-- SKILLS -->
-<section id="skills" class="skills">
-    <div class="container">
-
-        <h2 class="section-title">Technical Skills</h2>
-
-        <div class="skills-grid">
-
-            <div class="skill-card">
-                <h3><i class="fas fa-code"></i> Programming</h3>
-                <p>Java, Python, JavaScript</p>
-            </div>
-
-            <div class="skill-card">
-                <h3><i class="fas fa-laptop-code"></i> Web</h3>
-                <p>HTML, CSS, Responsive Design</p>
-            </div>
-
-            <div class="skill-card">
-                <h3><i class="fas fa-tools"></i> Tools</h3>
-                <p>Git, GitHub, VS Code</p>
-            </div>
-
-            <div class="skill-card">
-                <h3><i class="fas fa-brain"></i> Concepts</h3>
-                <p>DSA, Problem Solving</p>
-            </div>
-
+        <p class="hero-tag">🚀 Available for opportunities</p>
+        <h1 class="hero-title">Hi, I'm <span class="gradient-text">Saurav Choudhary</span></h1>
+        <h2 class="hero-highlight">I Build <span>Scalable Systems</span> That Actually Work.</h2>
+        <p class="hero-desc">Java Developer | Frontend Developer | Solving problems using DSA.</p>
+        
+        <div class="hero-buttons">
+            <a href="#projects" class="btn primary">View Work</a>
+            <a href="https://github.com/Saurav-study" target="_blank" class="btn secondary"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/saurav-choudhary-9343b324a" target="_blank" class="btn secondary"><i class="fab fa-linkedin"></i></a>
         </div>
-
     </div>
 </section>
 
-
-<!-- PROJECTS -->
-<section id="projects" class="projects">
-
-    <div class="container">
-
-        <h2 class="section-title">Projects</h2>
-
-        <div class="timeline">
-
-            <div class="timeline-container left">
-                <div class="timeline-content">
-                    <h3>📝 To-Do List Web App</h3>
-                    <p>Task manager to organize daily work.</p>
+    <section id="about" class="section container">
+        <div class="info-grid">
+            <div class="glass-box">
+                <h2 class="box-title">About Me 👨‍💻</h2>
+                <p>I'm a Computer Science student focused on backend engineering, Java development, and problem solving. I enjoy building scalable systems and writing clean, efficient code.</p>
+                <div class="stats-row">
+                    <div class="stat"><h3>200+</h3><p>DSA Problems</p></div>
+                    <div class="stat"><h3>10+</h3><p>Projects</p></div>
                 </div>
             </div>
 
-            <div class="timeline-container right">
-                <div class="timeline-content">
-                    <h3>🚀 Neon Space Defender</h3>
-                    <p>JavaScript browser game.</p>
+            <div id="skills" class="glass-box">
+                <h2 class="box-title">Tech Stack 🛠️</h2>
+                <div class="skills-flex">
+                    <div class="skill-card">Java</div>
+                    <div class="skill-card">Python</div>
+                    <div class="skill-card">DSA</div>
+                    <div class="skill-card">Web Dev</div>
+                    <div class="skill-card">SQL</div>
+                    <div class="skill-card">React</div>
                 </div>
             </div>
-
-            <div class="timeline-container left">
-                <div class="timeline-content">
-                    <h3>⚡ Cyber Run</h3>
-                    <p>Fast-paced endless runner game.</p>
-                </div>
-            </div>
-
         </div>
+    </section>
 
-    </div>
+    <section id="projects" class="section container">
+        <h2 class="section-title">Project Roadmap 🛤️</h2>
+        <div class="roadmap">
+            <div class="roadmap-line"></div>
 
-</section>
+            <div class="roadmap-item right">
+                <div class="roadmap-content glass-box">
+                    <span class="tag">Featured ✨</span>
+                    <h3>Neon Space Defender</h3>
+                    <p>High-performance browser game with smooth animations.</p>
+                    <a href="https://github.com/Saurav-study/project_games.git" target="_blank" class="project-btn">View Code <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
 
+            <div class="roadmap-item left">
+                <div class="roadmap-content glass-box">
+                    <span class="tag">Utility 📝</span>
+                    <h3>To-Do App</h3>
+                    <p>Task manager with local storage and sleek UI.</p>
+                    <a href="https://github.com/Saurav-study/project.git" target="_blank" class="project-btn">View Code <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
 
-<!-- CONTACT -->
-<section id="contact" class="contact">
-    <div class="container">
+            <div class="roadmap-item right">
+                <div class="roadmap-content glass-box">
+                    <span class="tag">Gaming 🏃</span>
+                    <h3>Cyber Run</h3>
+                    <p>Endless runner game built for performance.</p>
+                    <a href="https://github.com/Saurav-study/project_games.git" target="_blank" class="project-btn">View Code <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        <h2 class="section-title">Contact</h2>
-
-        <p>
-            <i class="fas fa-envelope"></i>
-            sauravchoudhary8789@gmail.com
-        </p>
-
-        <p>
-            <i class="fab fa-github"></i>
-            github.com/Saurav-study
-        </p>
-
-    </div>
-</section>
-
+    <section id="contact" class="section container">
+        <div class="glass-box contact-card">
+            <h2 class="section-title">Let's Connect 🤝</h2>
+            <p><i class="fas fa-envelope"></i> sauravchoudhary8789@gmail.com</p>
+            <div class="contact-socials">
+                <a href="https://www.linkedin.com/in/saurav-choudhary-9343b324a" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/Saurav-study" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </section>
 </main>
 
-
-<!-- FOOTER -->
 <footer class="footer">
-    <p>© 2026 Saurav Choudhary • Built with ❤️</p>
+    <p>© 2026 Saurav Choudhary • Built with ❤️ and Precision</p>
 </footer>
 
+<script>
+    window.onscroll = function() {
+        let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+        let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        let scrolled = (winScroll / height) * 100;
+        document.getElementById("progress-bar").style.width = scrolled + "%";
+    };
+</script>
 </body>
 </html>

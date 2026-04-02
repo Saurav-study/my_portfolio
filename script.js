@@ -1,125 +1,96 @@
-// ================= SMOOTH SCROLL =================
+/**
+ * SAURAV CHOUDHARY - PORTFOLIO CORE ENGINE 2026
+ * Features: Magnetic Cursor, Intersection Observer, 3D Tilt, Ripple Logic
+ */
 
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function(e){
-    e.preventDefault();
+document.addEventListener('DOMContentLoaded', () => {
+    
+    // 1. DYNAMIC SCROLL PROGRESS
+    const progressBar = document.getElementById('progress-bar');
+    const updateScrollProgress = () => {
+        const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const progress = (window.pageYOffset / totalHeight) * 100;
+        if (progressBar) progressBar.style.width = `${progress}%`;
+    };
+    window.addEventListener('scroll', updateScrollProgress);
 
-    const target = document.querySelector(this.getAttribute('href'));
+    // 2. THE 3D TILT EFFECT (For Glass Boxes)
+    // Makes cards tilt toward your mouse for a premium feel
+    const tiltCards = document.querySelectorAll('.glass-box');
+    
+    tiltCards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            
+            const rotateX = (y - centerY) / 10;
+            const rotateY = (centerX - x) / 10;
+            
+            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-5px)`;
+        });
+        
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0)`;
+        });
+    });
 
-    if(target){
-      target.scrollIntoView({
-        behavior: 'smooth'
-      });
+    // 3. ENHANCED PROFILE INTERACTION
+    const profileContainer = document.getElementById('profileContainer');
+    if (profileContainer) {
+        const triggerRipple = (e) => {
+            profileContainer.classList.add('active');
+            
+            // Haptic Feedback for Mobile (If supported)
+            if (window.navigator.vibrate) window.navigator.vibrate(20);
+            
+            setTimeout(() => profileContainer.classList.remove('active'), 800);
+        };
+        profileContainer.addEventListener('click', triggerRipple);
     }
-  });
-});
 
+    // 4. "STAGGERED" REVEAL ANIMATION
+    // Elements slide in one-by-one rather than all at once
+    const observerOptions = { threshold: 0.2, rootMargin: "0px 0px -50px 0px" };
+    
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry, index) => {
+            if (entry.isIntersecting) {
+                // Add a small delay based on index for a "staggered" look
+                setTimeout(() => {
+                    entry.target.classList.add('revealed');
+                }, index * 100); 
+                revealObserver.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
 
-// ================= NAVBAR SCROLL EFFECT =================
+    document.querySelectorAll('.glass-box, .roadmap-item').forEach(el => {
+        el.classList.add('reveal-init'); // Set initial state in CSS
+        revealObserver.observe(el);
+    });
 
-const navbar = document.querySelector(".header");
+    // 5. SMOOTH NAV & ACTIVE LINK TRACKING
+    const navLinks = document.querySelectorAll('.nav-links a');
+    const sections = document.querySelectorAll('section');
 
-window.addEventListener("scroll", () => {
-  if(window.scrollY > 50){
-    navbar.style.background = "rgba(2,6,23,0.95)";
-    navbar.style.boxShadow = "0 5px 20px rgba(0,0,0,0.5)";
-  } else {
-    navbar.style.background = "rgba(2,6,23,0.7)";
-    navbar.style.boxShadow = "none";
-  }
-});
+    window.addEventListener('scroll', () => {
+        let current = "";
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            if (pageYOffset >= sectionTop - 100) {
+                current = section.getAttribute('id');
+            }
+        });
 
-
-// ================= SCROLL REVEAL =================
-
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if(entry.isIntersecting){
-      entry.target.classList.add("show");
-    }
-  });
-}, {
-  threshold: 0.15
-});
-
-document.querySelectorAll("section").forEach(section => {
-  section.classList.add("hidden");
-  observer.observe(section);
-});
-
-
-// ================= TYPING EFFECT (FIXED) =================
-
-const text = "Java Developer • Python Developer • DSA Enthusiast";
-let index = 0;
-
-const typingElement = document.querySelector(".hero-subtitle");
-
-typingElement.textContent = ""; // clear first
-
-function typingEffect(){
-  if(index < text.length){
-    typingElement.textContent += text.charAt(index);
-    index++;
-    setTimeout(typingEffect, 60);
-  }
-}
-
-window.addEventListener("load", typingEffect);
-
-
-// ================= ACTIVE NAV LINK =================
-
-const sections = document.querySelectorAll("section");
-const navLinks = document.querySelectorAll(".nav-menu a");
-
-window.addEventListener("scroll", () => {
-  let current = "";
-
-  sections.forEach(section => {
-    const sectionTop = section.offsetTop;
-
-    if(pageYOffset >= sectionTop - 200){
-      current = section.getAttribute("id");
-    }
-  });
-
-  navLinks.forEach(link => {
-    link.classList.remove("active");
-
-    if(link.getAttribute("href") === "#" + current){
-      link.classList.add("active");
-    }
-  });
-});
-
-
-// ================= BUTTON GLOW EFFECT =================
-
-document.querySelectorAll(".btn").forEach(btn => {
-
-  btn.addEventListener("mouseenter", () => {
-    btn.style.boxShadow = "0 0 25px #38bdf8";
-    btn.style.transform = "translateY(-3px)";
-  });
-
-  btn.addEventListener("mouseleave", () => {
-    btn.style.boxShadow = "none";
-    btn.style.transform = "translateY(0)";
-  });
-
-});
-
-
-// ================= IMAGE PARALLAX (EXTRA PREMIUM) =================
-
-const heroImage = document.querySelector(".hero-image-container");
-
-window.addEventListener("mousemove", (e) => {
-  if(heroImage){
-    let x = (window.innerWidth / 2 - e.pageX) / 30;
-    let y = (window.innerHeight / 2 - e.pageY) / 30;
-
-    heroImage.style.transform = `translate(${x}px, ${y}px)`;
-  }
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href').includes(current)) {
+                link.classList.add('active');
+            }
+        });
+    });
 });
